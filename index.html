@@ -21,13 +21,11 @@
 
         .tv-screen {
             /* 
-               A TV Box envia sinal paisagem (1920x1080) para a TV em pé.
-               Desenhamos o painel 1080x1920 e rotacionamos 90 graus para preencher.
+               A tela já está configurada como em pé no sistema. 
+               Então usamos 100vw e 100vh normalmente, sem rotacionar no CSS.
             */
-            width: 1080px;
-            height: 1920px;
-            transform: rotate(90deg); /* Use -90deg se ficar de cabeça para baixo */
-            position: relative;
+            width: 100vw;
+            height: 100vh;
             background-color: #0f172a;
             overflow: hidden;
             display: flex;
