@@ -20,12 +20,14 @@
         }
 
         .tv-screen {
-            /* 
-               A tela já está configurada como em pé no sistema. 
-               Então usamos 100vw e 100vh normalmente, sem rotacionar no CSS.
-            */
-            width: 100vw;
-            height: 100vh;
+            width: 1080px;
+            height: 1920px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: -960px;
+            margin-left: -540px;
+            transform: rotate(90deg); /* Mude para -90deg se ficar de cabeça para baixo */
             background-color: #0f172a;
             overflow: hidden;
             display: flex;
