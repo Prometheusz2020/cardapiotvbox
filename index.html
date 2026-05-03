@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardápio TV Box</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="output.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        .tv-screen {
+            /* 
+               A tela já está configurada como em pé no sistema. 
+               Então usamos 100vw e 100vh normalmente, sem rotacionar no CSS.
+            */
+            width: 100vw;
+            height: 100vh;
+            background-color: #0f172a;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Animações e Efeitos Extras */
+        .glass-card {
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        .float-anim {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .pulse-glow {
+            animation: glow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { box-shadow: 0 0 20px rgba(249, 115, 22, 0.2); }
+            to { box-shadow: 0 0 50px rgba(249, 115, 22, 0.6); }
+        }
+        
+        /* Ajuste caso a imagem original precise ser desvirada */
+        .img-adjust {
+            /* Descomente a linha abaixo e mude o ângulo se a foto da pasta ficar torta */
+            /* transform: rotate(-90deg) scale(1.5); */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="tv-screen">
+        
+        <!-- Imagem de Fundo (A Foto da Pasta) -->
+        <div class="absolute inset-0 z-0">
+            <!-- A imagem é usada como fundo pra dar um tom bonito de restaurante -->
+            <img src="totem marmitex virado.png" class="w-full h-full object-cover img-adjust opacity-50" alt="Fundo Marmitex">
+            <div class="absolute inset-0 bg-gradient-to-b from-slate-900/40 via-slate-900/80 to-slate-950"></div>
+        </div>
+
+        <!-- Conteúdo Principal -->
+        <div class="relative z-10 flex flex-col h-full p-12">
+            
+            <!-- Header -->
+            <div class="mt-4 mb-8 text-center">
+                <h1 class="text-[7.5rem] font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-amber-300 drop-shadow-2xl tracking-tight leading-tight uppercase">
+                    Cardápio
+                </h1>
+                <div class="w-64 h-3 bg-gradient-to-r from-orange-500 to-amber-400 mx-auto mt-6 rounded-full"></div>
+            </div>
+
+            <!-- Lista de Preços (Glassmorphism) -->
+            <div class="flex-1 glass-card rounded-[3rem] p-10 flex flex-col justify-center gap-8 mx-6 mb-10 relative overflow-hidden">
+                
+                <!-- Decoração de Fundo do Card -->
+                <div class="absolute -top-32 -right-32 w-96 h-96 bg-brand-500/20 rounded-full blur-[80px]"></div>
+                <div class="absolute -bottom-32 -left-32 w-96 h-96 bg-amber-500/20 rounded-full blur-[80px]"></div>
+
+                <!-- Item 1 -->
+                <div class="flex items-center justify-between bg-white/5 hover:bg-white/10 transition-all p-8 rounded-3xl relative z-10">
+                    <div class="flex flex-col">
+                        <span class="text-[3.5rem] font-bold text-brand-500">Marmitex P</span>
+                        <span class="text-[1.8rem] text-slate-300 mt-2">Arroz, Feijão, 1 Mistura, Legumes</span>
+                    </div>
+                    <div class="flex items-start">
+                        <span class="text-[2rem] text-brand-500 font-bold mt-2 mr-2">R$</span>
+                        <span class="text-[5.5rem] font-black text-white leading-none">23</span>
+                        <span class="text-[2.5rem] text-slate-400 font-bold mt-2">,00</span>
+                    </div>
+                </div>
+
+                <!-- Item 2 (Destaque) -->
+                <div class="flex items-center justify-between bg-gradient-to-r from-brand-600/40 to-brand-500/10 border-2 border-brand-500/50 p-8 rounded-3xl relative z-10 pulse-glow transform scale-105 my-2">
+                    <div class="absolute -top-5 left-10 bg-brand-500 text-white text-[1.5rem] font-bold px-6 py-2 rounded-full uppercase tracking-wider shadow-lg">
+                        Mais Vendida
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="text-[3.5rem] font-bold text-white">Marmitex M</span>
+                        <span class="text-[1.8rem] text-brand-100 mt-2">Arroz, Feijão, 2 Misturas, Legumes</span>
+                    </div>
+                    <div class="flex items-start">
+                        <span class="text-[2rem] text-brand-400 font-bold mt-2 mr-2">R$</span>
+                        <span class="text-[6rem] font-black text-white leading-none">26</span>
+                        <span class="text-[2.5rem] text-white/70 font-bold mt-2">,00</span>
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="flex items-center justify-between bg-white/5 hover:bg-white/10 transition-all p-8 rounded-3xl relative z-10">
+                    <div class="flex flex-col">
+                        <span class="text-[3.5rem] font-bold text-brand-500">Marmitex G</span>
+                        <span class="text-[1.8rem] text-slate-300 mt-2">Arroz, Feijão, 2 Misturas, Legumes</span>
+                    </div>
+                    <div class="flex items-start">
+                        <span class="text-[2rem] text-brand-500 font-bold mt-2 mr-2">R$</span>
+                        <span class="text-[5.5rem] font-black text-white leading-none">30</span>
+                        <span class="text-[2.5rem] text-slate-400 font-bold mt-2">,00</span>
+                    </div>
+                </div>
+
+                <!-- Misturas -->
+                <div class="flex flex-col items-center justify-center bg-brand-900/40 border-2 border-brand-500/30 p-6 rounded-3xl relative z-10 mt-2">
+                    <span class="text-[2.5rem] font-bold text-brand-400 uppercase tracking-widest mb-3">Opções de Misturas</span>
+                    <span class="text-[2rem] text-white/90 leading-relaxed text-center">
+                        Contra-Filé • Filé-Frango • Linguiça Toscana<br>
+                        Bisteca Suína • Panqueca (Frango, Carne ou Presunto e Queijo)
+                    </span>
+                </div>
+
+            </div>
+
+            <!-- Rodapé / Mensagem -->
+            <div class="mt-auto flex flex-col items-center justify-center text-center pb-8">
+                <div class="bg-brand-500 text-white text-[2rem] font-bold px-12 py-6 rounded-full shadow-[0_0_30px_rgba(249,115,22,0.4)] float-anim uppercase tracking-widest">
+                    Faça seu pedido no balcão
+                </div>
+                <p class="text-[1.8rem] text-slate-400 mt-8 font-medium">
+                    Aceitamos PIX, Cartão de Crédito e Débito.
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
